@@ -1,4 +1,4 @@
-#This notebook further reduces the data to the set of births I want to focus on for predicting birthweight: single, term, live births.
+#This file further reduces the data to the set of births I want to focus on for predicting birthweight: single, term, live births.
 # First, it saves a version of the data that reflects these conditions, and excludes births where birthweight is missing.
 #Separately, it creates new files that mimic the full set of criteria used in Nahum & Stanislaw (2002).
 

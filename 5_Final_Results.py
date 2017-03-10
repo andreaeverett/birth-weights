@@ -1,4 +1,4 @@
-#This notebook produces the final results I presented orally & online about the project.
+#This file produces the final results I presented orally & online about the project.
 #It does not include many other models and subsets of data I tested along the way.
 
 from __future__ import division
