@@ -21,26 +21,20 @@ import seaborn as sns
 fullsample2014_oe = pd.read_csv('data_files/largesample/revised2014_oe.csv')
 fullsample2015_oe = pd.read_csv('data_files/largesample/revised2015_oe.csv')
 
-#Further narrow to low-risk pregnancies, dropping mothers who smoke, who have high-risk
-#conditions like diabetes and hypertension, and who deliver infants with major
-#congenital anomalies. But keep women of all races in the data (unlike Nahum & Stanislaw 2002).
 
-#First, drop smokers:
-withrace2014_oe = fullsample2014_oe[fullsample2014_oe.CIG1_R == 0]
-withrace2014_oe = withrace2014_oe[withrace2014_oe.CIG2_R == 0]
-withrace2014_oe = withrace2014_oe[withrace2014_oe.CIG3_R == 0]
+#Further narrow these data to low-risk pregnancies: drop mothers who smoke, who have
+# high risk conditions like diabetes and hypertension, and whose infants have major
+#congenital anomalies. BUT: keep women of all races (unlike Nahum & Stanislaw 2002).
 
-withrace2015_oe = fullsample2015_oe[fullsample2015_oe.CIG1_R == 0]
-withrace2015_oe = withrace2015_oe[withrace2015_oe.CIG2_R == 0]
-withrace2015_oe = withrace2015_oe[withrace2015_oe.CIG3_R == 0]
+withrace2014_oe = fullsample2014_oe[(fullsample2014_oe.CIG1_R == 0) & (fullsample2014_oe.CIG2_R == 0)
+                & (fullsample2014_oe.CIG3_R == 0) & (fullsample2014_oe.NO_CONGEN == 1) & (fullsample2014_oe.RF_PDIAB == 0)
+                & (fullsample2014_oe.RF_GDIAB == 0) & (fullsample2014_oe.RF_PHYPE == 0) & (fullsample2014_oe.RF_GHYPE == 0)
+                & (fullsample2014_oe.RF_EHYPE == 0)]
 
-#Next, drop fetal anomalies
-withrace2014_oe = withrace2014_oe[withrace2014_oe.NO_CONGEN == 1]
-withrace2015_oe = withrace2015_oe[withrace2015_oe.NO_CONGEN == 1]
-
-#Next, drop diabetes, hypertension, and eclampsia
-withrace2014_oe = withrace2014_oe[(withrace2014_oe.RF_PDIAB == 0) & (withrace2014_oe.RF_GDIAB == 0) & (withrace2014_oe.RF_PHYPE == 0) & (withrace2014_oe.RF_GHYPE == 0) & (withrace2014_oe.RF_EHYPE == 0)]
-withrace2015_oe = withrace2015_oe[(withrace2015_oe.RF_PDIAB == 0) & (withrace2015_oe.RF_GDIAB == 0) & (withrace2015_oe.RF_PHYPE == 0) & (withrace2015_oe.RF_GHYPE == 0) & (withrace2015_oe.RF_EHYPE == 0)]
+withrace2015_oe = fullsample2015_oe[(fullsample2015_oe.CIG1_R == 0) & (fullsample2015_oe.CIG2_R == 0)
+                & (fullsample2015_oe.CIG3_R == 0) & (fullsample2015_oe.NO_CONGEN == 1) & (fullsample2015_oe.RF_PDIAB == 0)
+                & (fullsample2015_oe.RF_GDIAB == 0) & (fullsample2015_oe.RF_PHYPE == 0) & (fullsample2015_oe.RF_GHYPE == 0)
+                & (fullsample2015_oe.RF_EHYPE == 0)]
 
 
 #Select the variables previously identified to include in the best model
